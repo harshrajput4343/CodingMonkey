@@ -15,14 +15,14 @@
 }
 
 :root {
-  --bg: #323437;
-  --sub-bg: #2c2e31;
-  --text: #d1d0c5;
-  --sub-text: #646669;
-  --main: #e2b714;
-  --error: #ca4754;
-  --error-extra: #7e2a33;
-  --correct: #d1d0c5;
+  --bg: #131417;
+  --sub-bg: #1e1f24;
+  --text: #f0f0f5;
+  --sub-text: #8b8d98;
+  --main: #9acbf7;
+  --error: #ff5c5c;
+  --error-extra: #d13b3b;
+  --correct: #f0f0f5;
 }
 
 * {

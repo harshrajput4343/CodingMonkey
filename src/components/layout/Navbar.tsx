@@ -19,7 +19,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onSignInClick,
 }) => {
   return (
-    <nav className="flex items-center justify-between px-8 py-4 max-w-7xl mx-auto w-full shrink-0">
+    <nav className="flex items-center justify-between px-8 py-4 w-full shrink-0">
       {/* Left section: Logo + nav icons */}
       <div className="flex items-center gap-8">
         <button onClick={onLogoClick} className="flex items-center gap-2.5 group">

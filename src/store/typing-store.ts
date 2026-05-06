@@ -188,7 +188,7 @@ export const useTypingStore = create<TypingState>((set, get) => ({
 
     // --- REGULAR CHARACTER ---
     const expectedChar = code[state.caretPos];
-    if (typedChar.length !== 1) return; // Ignore multi-char keys
+    if (!typedChar || typedChar.length !== 1) return; // Ignore multi-char keys or undefined
 
     const isCorrect = typedChar === expectedChar;
     const newCharStates = [...state.charStates];

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, Github, Mail, Eye, EyeOff, Keyboard } from 'lucide-react';
+import { X, GitBranch, Mail, Eye, EyeOff, Keyboard } from 'lucide-react';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -113,7 +113,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                 onClick={() => handleOAuthClick('GitHub')}
                 className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg bg-sub-bg/60 border border-sub-text/15 text-sub-text hover:text-text hover:border-sub-text/30 transition-all text-xs font-medium"
               >
-                <Github size={14} />
+                <GitBranch size={14} />
                 <span>GitHub</span>
               </button>
               <button

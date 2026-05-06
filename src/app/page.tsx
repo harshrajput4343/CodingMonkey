@@ -64,7 +64,7 @@ export default function Home() {
 
       <div className="flex-1 flex flex-col items-center justify-start px-6 overflow-hidden">
         {currentView === 'problems' ? (
-          <div className="w-full flex flex-col h-full py-4" style={{ maxWidth: '960px' }}>
+          <div className="w-full flex flex-col h-full py-4" style={{ maxWidth: '860px' }}>
             <ProblemList
               snippets={snippetsData as Snippet[]}
               onSelectProblem={handleSelectProblem}
@@ -94,7 +94,7 @@ export default function Home() {
         )}
       </div>
 
-      <footer className="py-3 px-8 flex justify-between items-center text-sub-text text-xs max-w-7xl mx-auto w-full shrink-0">
+      <footer className="py-3 px-8 flex justify-between items-center text-sub-text text-xs w-full shrink-0">
         <div className="flex gap-6">
           <a href="#" className="hover:text-text transition-colors">github</a>
           <a href="#" className="hover:text-text transition-colors">discord</a>

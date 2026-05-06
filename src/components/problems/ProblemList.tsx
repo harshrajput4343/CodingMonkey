@@ -186,7 +186,7 @@ export const ProblemList: React.FC<ProblemListProps> = ({ snippets, onSelectProb
       <div className="flex items-center px-4 py-2.5 text-[10px] uppercase tracking-widest text-sub-text/60 border-b border-sub-text/10">
         <span className="w-12 shrink-0">#</span>
         <span className="flex-1">Title</span>
-        <span className="w-40 text-center hidden md:block">Category</span>
+        <span className="w-48 text-left hidden md:block">Category</span>
         <span className="w-20 text-center">Difficulty</span>
         <span className="w-24 text-center">Action</span>
       </div>
@@ -212,7 +212,7 @@ export const ProblemList: React.FC<ProblemListProps> = ({ snippets, onSelectProb
               <span className="flex-1 text-sm text-text group-hover:text-main transition-colors font-medium truncate pr-4">
                 {snippet.title}
               </span>
-              <span className="w-40 text-center text-xs text-sub-text/60 hidden md:block truncate">
+              <span className="w-48 text-left text-xs text-sub-text/60 hidden md:block truncate">
                 {snippet.category}
               </span>
               <span className={`w-20 text-center text-xs font-semibold ${getDifficultyStyle(snippet.difficulty)}`}>
