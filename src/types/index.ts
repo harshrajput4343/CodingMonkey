@@ -17,6 +17,8 @@ export interface Snippet {
   approach: Approach;
   code: string;
   difficulty: Difficulty;
+  description?: string;
+  example?: string;
 }
 
 export interface TypingState {
