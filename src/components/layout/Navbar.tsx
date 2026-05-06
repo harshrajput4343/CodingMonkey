@@ -19,7 +19,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onSignInClick,
 }) => {
   return (
-    <nav className="flex items-center justify-between px-8 py-4 w-full shrink-0">
+    <nav className="flex items-center justify-between px-5 py-4 w-full shrink-0">
       {/* Left section: Logo + nav icons */}
       <div className="flex items-center gap-8">
         <button onClick={onLogoClick} className="flex items-center gap-2.5 group">
@@ -33,7 +33,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={() => onNavigate?.('typing')}
             title="Typing Test"
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold tracking-wide transition-all ${
               currentView === 'typing'
                 ? 'text-main bg-main/10'
                 : 'text-sub-text hover:text-text hover:bg-sub-bg/40'
@@ -46,7 +46,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={() => onNavigate?.('problems')}
             title="Problem List"
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold tracking-wide transition-all ${
               currentView === 'problems'
                 ? 'text-main bg-main/10'
                 : 'text-sub-text hover:text-text hover:bg-sub-bg/40'
@@ -58,7 +58,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             title="Leaderboard"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-sub-text hover:text-text hover:bg-sub-bg/40 transition-all"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold tracking-wide text-sub-text hover:text-text hover:bg-sub-bg/40 transition-all"
           >
             <Trophy size={14} />
             <span className="hidden sm:inline">Leaderboard</span>
@@ -66,14 +66,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             title="About"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-sub-text hover:text-text hover:bg-sub-bg/40 transition-all"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold tracking-wide text-sub-text hover:text-text hover:bg-sub-bg/40 transition-all"
           >
             <Info size={14} />
           </button>
 
           <button
             title="Settings"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-sub-text hover:text-text hover:bg-sub-bg/40 transition-all"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold tracking-wide text-sub-text hover:text-text hover:bg-sub-bg/40 transition-all"
           >
             <Settings size={14} />
           </button>
@@ -91,7 +91,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
         <button
           onClick={onSignInClick}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-main/10 border border-main/20 text-main hover:bg-main hover:text-bg text-xs font-bold transition-all"
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-main/10 border border-main/20 text-main hover:bg-main hover:text-bg text-sm font-bold tracking-wide transition-all"
         >
           <LogIn size={14} />
           <span>Sign In</span>

@@ -94,7 +94,7 @@ export default function Home() {
         )}
       </div>
 
-      <footer className="py-3 px-8 flex justify-between items-center text-sub-text text-xs w-full shrink-0">
+      <footer className="py-3 px-5 flex justify-between items-center text-sub-text text-xs w-full shrink-0">
         <div className="flex gap-6">
           <a href="#" className="hover:text-text transition-colors">github</a>
           <a href="#" className="hover:text-text transition-colors">discord</a>
