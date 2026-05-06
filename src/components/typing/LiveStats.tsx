@@ -24,7 +24,7 @@ export const LiveStats: React.FC = () => {
   if (!isActive && !isFinished) return null;
 
   return (
-    <div className="flex gap-12 text-2xl font-mono mt-8 justify-center h-8">
+    <div className="flex gap-12 text-2xl font-mono my-12 justify-center h-8">
       <div className="flex flex-col items-center">
         <span className="text-sub-text text-xs uppercase tracking-widest">wpm</span>
         <span className="text-main font-bold">{isActive ? wpm : '-'}</span>

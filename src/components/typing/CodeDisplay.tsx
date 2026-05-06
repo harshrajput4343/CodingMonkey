@@ -35,7 +35,7 @@ export const CodeDisplay: React.FC = () => {
   return (
     <div 
       ref={containerRef}
-      className="relative font-mono text-xl leading-relaxed max-w-3xl mx-auto mt-12 outline-none select-none"
+      className="relative font-mono text-3xl leading-relaxed max-w-5xl mx-auto outline-none select-none"
     >
       <div className="flex flex-wrap break-all whitespace-pre-wrap relative">
         {snippet.code.split('').map((char, index) => {

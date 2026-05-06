@@ -29,26 +29,26 @@ export default function Home() {
     <main className="flex flex-col min-h-screen bg-bg text-text selection:bg-main selection:text-bg">
       <Navbar />
       
-      <div className="flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full px-8 pb-24">
+      <div className="flex-1 flex flex-col justify-center items-center max-w-7xl mx-auto w-full px-8 py-20">
         {!isFinished ? (
-          <>
+          <div className="w-full max-w-5xl flex flex-col gap-8">
             <TestModeSelector />
             <LiveStats />
             <CodeDisplay />
             
-            <div className="mt-auto pt-12 flex justify-center gap-8 text-sub-text text-sm">
+            <div className="mt-8 flex justify-center gap-12 text-sub-text text-sm opacity-50 hover:opacity-100 transition-opacity">
               <div className="flex items-center gap-2">
-                <span className="bg-sub-bg px-2 py-1 rounded text-xs font-bold">tab</span>
+                <span className="bg-sub-bg px-2 py-1 rounded text-xs font-bold border border-sub-text/20">tab</span>
                 <span>+</span>
-                <span className="bg-sub-bg px-2 py-1 rounded text-xs font-bold">enter</span>
+                <span className="bg-sub-bg px-2 py-1 rounded text-xs font-bold border border-sub-text/20">enter</span>
                 <span className="ml-1">- restart test</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="bg-sub-bg px-2 py-1 rounded text-xs font-bold">esc</span>
+                <span className="bg-sub-bg px-2 py-1 rounded text-xs font-bold border border-sub-text/20">esc</span>
                 <span className="ml-1">- focus test</span>
               </div>
             </div>
-          </>
+          </div>
         ) : (
           <ResultsScreen />
         )}
