@@ -1,17 +1,23 @@
 'use client';
 
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { CodeDisplay } from '@/components/typing/CodeDisplay';
 import { LiveStats } from '@/components/typing/LiveStats';
 import { TestModeSelector } from '@/components/typing/TestModeSelector';
 import { ResultsScreen } from '@/components/typing/ResultsScreen';
+import { ProblemList } from '@/components/problems/ProblemList';
+import { AuthModal } from '@/components/auth/AuthModal';
 import { useTypingStore } from '@/store/typing-store';
 import snippetsData from '@/data/snippets.json';
 import { Snippet } from '@/types';
 
+type AppView = 'typing' | 'problems';
+
 export default function Home() {
   const { setSnippet, isFinished, language, approach, snippet } = useTypingStore();
+  const [currentView, setCurrentView] = useState<AppView>('typing');
+  const [showAuthModal, setShowAuthModal] = useState(false);
 
   const loadRandomSnippet = useCallback((excludeId?: string) => {
     const filtered = snippetsData.filter(
@@ -33,13 +39,40 @@ export default function Home() {
   const handleNextTest = () => loadRandomSnippet(snippet?.id);
   const handleRestart = () => loadRandomSnippet(snippet?.id);
 
+  const handleSelectProblem = (selectedSnippet: Snippet) => {
+    setSnippet(selectedSnippet);
+    setCurrentView('typing');
+  };
+
+  const handleLogoClick = () => {
+    handleRestart();
+    setCurrentView('typing');
+  };
+
+  const handleNavigate = (view: AppView) => {
+    setCurrentView(view);
+  };
+
   return (
     <main className="flex flex-col h-screen bg-bg text-text selection:bg-main selection:text-bg overflow-hidden">
-      <Navbar onLogoClick={handleRestart} />
+      <Navbar
+        onLogoClick={handleLogoClick}
+        currentView={currentView}
+        onNavigate={handleNavigate}
+        onSignInClick={() => setShowAuthModal(true)}
+      />
 
-      <div className="flex-1 flex flex-col items-center justify-center px-6 overflow-hidden">
-        {!isFinished ? (
-          <div className="w-full flex flex-col items-center gap-4" style={{ maxWidth: '860px' }}>
+      <div className="flex-1 flex flex-col items-center justify-start px-6 overflow-hidden">
+        {currentView === 'problems' ? (
+          <div className="w-full flex flex-col h-full py-4" style={{ maxWidth: '960px' }}>
+            <ProblemList
+              snippets={snippetsData as Snippet[]}
+              onSelectProblem={handleSelectProblem}
+              onClose={() => setCurrentView('typing')}
+            />
+          </div>
+        ) : !isFinished ? (
+          <div className="w-full flex flex-col items-center justify-center flex-1 gap-4" style={{ maxWidth: '860px' }}>
             <TestModeSelector />
             <LiveStats />
             <CodeDisplay onRestart={handleRestart} />
@@ -55,7 +88,9 @@ export default function Home() {
             </div>
           </div>
         ) : (
-          <ResultsScreen onNextTest={handleNextTest} />
+          <div className="w-full flex flex-col items-center justify-center flex-1">
+            <ResultsScreen onNextTest={handleNextTest} />
+          </div>
         )}
       </div>
 
@@ -66,6 +101,9 @@ export default function Home() {
         </div>
         <span>codingMonkey v1.0</span>
       </footer>
+
+      {/* Auth Modal */}
+      <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
     </main>
   );
 }

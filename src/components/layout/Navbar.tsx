@@ -1,15 +1,26 @@
 'use client';
 
 import React from 'react';
-import { Keyboard, Trophy, Info, Settings, Bell, User } from 'lucide-react';
+import { Keyboard, Trophy, Info, Settings, Bell, User, Code2, LogIn } from 'lucide-react';
+
+type AppView = 'typing' | 'problems';
 
 interface NavbarProps {
   onLogoClick?: () => void;
+  currentView?: AppView;
+  onNavigate?: (view: AppView) => void;
+  onSignInClick?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onLogoClick }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  onLogoClick,
+  currentView = 'typing',
+  onNavigate,
+  onSignInClick,
+}) => {
   return (
     <nav className="flex items-center justify-between px-8 py-4 max-w-7xl mx-auto w-full shrink-0">
+      {/* Left section: Logo + nav icons */}
       <div className="flex items-center gap-8">
         <button onClick={onLogoClick} className="flex items-center gap-2.5 group">
           <Keyboard className="w-7 h-7 text-main" />
@@ -18,29 +29,72 @@ export const Navbar: React.FC<NavbarProps> = ({ onLogoClick }) => {
           </h1>
         </button>
 
-        <div className="flex items-center gap-5 ml-4">
-          <button onClick={onLogoClick} title="Typing Test" className="text-sub-text hover:text-text transition-colors">
-            <Keyboard size={18} />
+        <div className="flex items-center gap-1 ml-4">
+          <button
+            onClick={() => onNavigate?.('typing')}
+            title="Typing Test"
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              currentView === 'typing'
+                ? 'text-main bg-main/10'
+                : 'text-sub-text hover:text-text hover:bg-sub-bg/40'
+            }`}
+          >
+            <Keyboard size={14} />
+            <span className="hidden sm:inline">Practice</span>
           </button>
-          <button title="Leaderboard" className="text-sub-text hover:text-text transition-colors">
-            <Trophy size={18} />
+
+          <button
+            onClick={() => onNavigate?.('problems')}
+            title="Problem List"
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              currentView === 'problems'
+                ? 'text-main bg-main/10'
+                : 'text-sub-text hover:text-text hover:bg-sub-bg/40'
+            }`}
+          >
+            <Code2 size={14} />
+            <span className="hidden sm:inline">Problems</span>
           </button>
-          <button title="About" className="text-sub-text hover:text-text transition-colors">
-            <Info size={18} />
+
+          <button
+            title="Leaderboard"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-sub-text hover:text-text hover:bg-sub-bg/40 transition-all"
+          >
+            <Trophy size={14} />
+            <span className="hidden sm:inline">Leaderboard</span>
           </button>
-          <button title="Settings" className="text-sub-text hover:text-text transition-colors">
-            <Settings size={18} />
+
+          <button
+            title="About"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-sub-text hover:text-text hover:bg-sub-bg/40 transition-all"
+          >
+            <Info size={14} />
+          </button>
+
+          <button
+            title="Settings"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-sub-text hover:text-text hover:bg-sub-bg/40 transition-all"
+          >
+            <Settings size={14} />
           </button>
         </div>
       </div>
 
-      <div className="flex items-center gap-5">
-        <button className="text-sub-text hover:text-text transition-colors">
-          <Bell size={18} />
+      {/* Right section: Notifications + Sign In */}
+      <div className="flex items-center gap-3">
+        <button
+          className="relative p-2 rounded-lg text-sub-text hover:text-text hover:bg-sub-bg/40 transition-all"
+          title="Notifications"
+        >
+          <Bell size={16} />
+          <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-main rounded-full" />
         </button>
-        <button className="flex items-center gap-2 text-sub-text hover:text-text transition-colors">
-          <User size={18} />
-          <span className="text-xs font-medium">sign in</span>
+        <button
+          onClick={onSignInClick}
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-main/10 border border-main/20 text-main hover:bg-main hover:text-bg text-xs font-bold transition-all"
+        >
+          <LogIn size={14} />
+          <span>Sign In</span>
         </button>
       </div>
     </nav>
